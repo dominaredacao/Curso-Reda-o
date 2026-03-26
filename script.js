@@ -99,10 +99,33 @@ function entrarAluno() {
 }
 function gerarCertificado() {
   const nome = document.getElementById("nomeCertificado").value.trim();
+  const cpf = document.getElementById("cpfCertificado").value.trim();
+  const concluiu = document.getElementById("concluiuCurso").checked;
+
+  const mensagem = document.getElementById("mensagemCertificado");
 
   if (!nome) {
-    alert("Digite seu nome completo.");
+    mensagem.textContent = "Digite seu nome completo.";
     return;
+  }
+
+  if (!cpf) {
+    mensagem.textContent = "Digite seu CPF.";
+    return;
+  }
+
+  if (!concluiu) {
+    mensagem.textContent = "Marque que concluiu o curso.";
+    return;
+  }
+
+  mensagem.textContent = "";
+
+  const nomeCodificado = encodeURIComponent(nome);
+  const cpfCodificado = encodeURIComponent(cpf);
+
+  window.open(`certificado.html?nome=${nomeCodificado}&cpf=${cpfCodificado}`, "_blank");
+}
   }
 
   const url = `certificado.html?nome=${encodeURIComponent(nome)}&carga=${encodeURIComponent("20 horas")}`;

@@ -97,12 +97,14 @@ function entrarAluno() {
     window.location.href = HOTMART_ALUNO_URL;
   }, 800);
 }
+
 function gerarCertificado() {
   const nome = document.getElementById("nomeCertificado").value.trim();
   const cpf = document.getElementById("cpfCertificado").value.trim();
   const concluiu = document.getElementById("concluiuCurso").checked;
-
   const mensagem = document.getElementById("mensagemCertificado");
+
+  mensagem.style.color = "#dc2626";
 
   if (!nome) {
     mensagem.textContent = "Digite seu nome completo.";
@@ -124,10 +126,8 @@ function gerarCertificado() {
   const nomeCodificado = encodeURIComponent(nome);
   const cpfCodificado = encodeURIComponent(cpf);
 
-  window.open(`certificado.html?nome=${nomeCodificado}&cpf=${cpfCodificado}`, "_blank");
-}
-  }
-
-  const url = `certificado.html?nome=${encodeURIComponent(nome)}&carga=${encodeURIComponent("20 horas")}`;
-  window.open(url, "_blank");
+  window.open(
+    `certificado.html?nome=${nomeCodificado}&cpf=${cpfCodificado}&carga=${encodeURIComponent("20 horas")}`,
+    "_blank"
+  );
 }
